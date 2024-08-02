@@ -4,7 +4,7 @@ const UserForm = () => {
   const {
     register,
     handleSubmit,
-    whatch,
+    watch,
     formState: { errors },
   } = useForm({
     mode: "onTouched",
@@ -148,7 +148,7 @@ const UserForm = () => {
             <label
               className={`absolute left-2 top-2 z-10 text-sm dark:text-slate-200 text-zinc-600`}
             >
-              Address 1
+              Address
             </label>
             <input
               className={`size-full bg-transparent outline-none relative dark:text-white text-zinc-800
@@ -158,10 +158,10 @@ const UserForm = () => {
                   : "hover:border-slate-200 focus:border-blue-400"
               }`}
               type="text"
-              {...register("address1", { required: "This field is required" })}
+              {...register("address", { required: "This field is required" })}
             />
             <p className="mt-1 text-red-600 text-sm">
-              {errors.address1?.message}
+              {errors.address?.message}
             </p>
           </div>
           <div
@@ -171,20 +171,47 @@ const UserForm = () => {
             <label
               className={`absolute left-2 top-2 z-10 text-sm dark:text-slate-200 text-zinc-600`}
             >
-              Address 2
+              Password
             </label>
             <input
               className={`size-full bg-transparent outline-none relative dark:text-white text-zinc-800
               pl-2 pt-5 border-b border-gray-300 ${
-                errors.address2
+                errors.password
                   ? "border-red-600"
                   : "hover:border-slate-200 focus:border-blue-400"
               }`}
-              type="text"
-              {...register("address2", { required: "This field is required" })}
+              type="password"
+              {...register("password", { required: "This field is required" })}
             />
             <p className="mt-1 text-red-600 text-sm">
-              {errors.address2?.message}
+              {errors.password?.message}
+            </p>
+          </div>
+          <div
+            className={`w-full h-14 relative dark:bg-zinc-800 bg-slate-200
+            rounded-tl-md rounded-tr-md`}
+          >
+            <label
+              className={`absolute left-2 top-2 z-10 text-sm dark:text-slate-200 text-zinc-600`}
+            >
+              Confirm Password
+            </label>
+            <input
+              className={`size-full bg-transparent outline-none relative dark:text-white text-zinc-800
+              pl-2 pt-5 border-b border-gray-300 ${
+                errors.confirmPassword
+                  ? "border-red-600"
+                  : "hover:border-slate-200 focus:border-blue-400"
+              }`}
+              type="password"
+              {...register("confirmPassword", { validate: (val)=>{
+                if(val !== watch("password")){
+                  return "confirm password and password doesn't match"
+                }
+              }})}
+            />
+            <p className="mt-1 text-red-600 text-sm">
+              {errors.confirmPassword?.message}
             </p>
           </div>
           <div
