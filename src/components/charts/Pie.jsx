@@ -12,7 +12,7 @@ const Pie = () => {
     } else {
       setMode("light");
     }
-  }, []);
+  }, [window.localStorage.getItem("theme")]);
   return (
     <ResponsivePie
       data={mockPieData}

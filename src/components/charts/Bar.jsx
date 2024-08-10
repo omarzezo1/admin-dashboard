@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 const Bar = () => {
   const [mode, setMode] = useState("");
+
   useEffect(() => {
     if (localStorage.getItem("theme")) {
       setMode(localStorage.getItem("theme"));
@@ -12,7 +13,8 @@ const Bar = () => {
     } else {
       setMode("light");
     }
-  }, []);
+  }, [window.localStorage.getItem("theme")]);
+
   return (
     <ResponsiveBar
       data={mockBarData}

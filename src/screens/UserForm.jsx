@@ -153,7 +153,7 @@ const UserForm = () => {
             <input
               className={`size-full bg-transparent outline-none relative dark:text-white text-zinc-800
               pl-2 pt-5 border-b border-gray-300 ${
-                errors.address1
+                errors.address
                   ? "border-red-600"
                   : "hover:border-slate-200 focus:border-blue-400"
               }`}
@@ -204,7 +204,7 @@ const UserForm = () => {
                   : "hover:border-slate-200 focus:border-blue-400"
               }`}
               type="password"
-              {...register("confirmPassword", { validate: (val)=>{
+              {...register("confirmPassword", { required: "This field is required", validate: (val)=>{
                 if(val !== watch("password")){
                   return "confirm password and password doesn't match"
                 }

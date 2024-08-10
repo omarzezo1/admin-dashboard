@@ -12,7 +12,7 @@ const Line = () => {
     } else {
       setMode("light");
     }
-  }, []);
+  }, [window.localStorage.getItem("theme")]);
   return (
     <ResponsiveLine
       data={mockLineData}

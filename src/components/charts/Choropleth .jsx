@@ -13,7 +13,7 @@ const Choropleth = () => {
     } else {
       setMode("light");
     }
-  }, []);
+  }, [window.localStorage.getItem("theme")]);
   return (
     <ResponsiveChoropleth
       data={mockGeographyData}
